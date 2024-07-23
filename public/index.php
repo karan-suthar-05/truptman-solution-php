@@ -1,6 +1,7 @@
 <?php
 use Core\Database;
 use Core\Router;
+use Core\Session;
 session_start();
 // require_once "router.php";
 const BASE_PATH = __DIR__ . "/../";
@@ -22,5 +23,4 @@ $config = require base_path("config.php");
 
 $router->route($uri,$method);
 
-$_SESSION[] = [];
-session_destroy();
+Session::unflash();

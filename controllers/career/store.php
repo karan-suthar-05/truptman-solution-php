@@ -1,5 +1,6 @@
 <?php
 use Core\Database;
+use Core\Session;
 
 $attributes = [
     "name"=>$_POST["Name"],
@@ -19,7 +20,8 @@ $form->validateFile($attributes["file"]);
 
 if($form->failed())
 {
-    $_SESSION["errors"] = $form->errors();
+    Session::flashErrors($form->errors());
+    // dd(Session::getErrors());
     return redirect("/#Career");
 }
 
@@ -34,9 +36,9 @@ $user = $db->query("select * from career where email = :email",[
 
 if($user)
 {
-    $_SESSION["errors"] = [
+    Session::flashErrors([
         "email" => "email alreay exist! try another email address!!!",
-    ];
+    ]);
     return redirect("/#Career");
 }
 
@@ -56,6 +58,6 @@ $db->query("insert into career(name,email,phone,job,current_company,ctc,experian
 ]);
 
 
-$_SESSION["message"] = "Form submitted successfuly";
+Session::flash("message","Form submitted successfuly");
 
-return redirect("/#Career");
+return redirect("/");

@@ -1,7 +1,13 @@
 <?php require_once "partials/head.php" ?>
-<?php require_once "partials/nav.php" ?>
+<?php require_once "partials/nav.php"?>
 
     <main role="main">
+        <?php if($data["message"]) : ?>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong><?= $data["message"] ?></strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        <?php endif; ?>
         <section class="banner" role="banner" id="Home">
             <div class="container-fluid p-0 owl-carousel owl-theme" id="Heroslider">
                 <div class="slide text-center">
@@ -414,11 +420,17 @@
                                         <input name="Name" class="form-control" type="text" placeholder="Your name"
                                             aria-label="Your name">
                                         <span class="form-msg d-none">This field is required</span>
+                                        <?php if(isset($data["errors"]["name"])) : ?>
+                                        <span class="form-msg "><?= $data["errors"]["name"] ?></span>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="col-lg-6">
                                         <input class="form-control" type="text" name="Email" placeholder="Email Address"
                                             aria-label="Email Address">
                                             <span class="form-msg d-none">This field is required</span>
+                                            <?php if(isset($data["errors"]["email"])) : ?>
+                                        <span class="form-msg "><?= $data["errors"]["email"] ?></span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="row mb-5 d-flex gap-5 gap-lg-0">
@@ -435,6 +447,9 @@
                                             <option value="Graphic">Graphics Designer</option>
                                             <option value="Fullstack">Fullstack Developer</option>
                                         </select>
+                                        <?php if(isset($data["errors"]["job"])) : ?>
+                                        <span class="form-msg"><?= $data["errors"]["job"] ?></span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="row mb-5 d-flex gap-5 gap-lg-0">
@@ -457,11 +472,17 @@
                                             <option value="2to5">2 - 5 Years</option>
                                             <option value="moreThan5">5+ Years</option>
                                         </select>
+                                        <?php if($data["errors"]["experiance"] ?? false) : ?>
+                                        <span class="form-msg"><?= $data["errors"]["experiance"] ?></span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="row mb-5">
                                     <div class="col-lg-12">
                                         <input name="file" type="file" class="form-control">
+                                        <?php if(isset($data["errors"]["file"])) : ?>
+                                        <span class="form-msg"><?= $data["errors"]["file"] ?></span>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="row mb-5 text-center">
@@ -470,6 +491,7 @@
                                             id="career-btn">Submit</button>
                                     </div>
                                 </div>
+                                
                                 <div class="row mb-5 d-none" id="errorMessage">
                                     <div class="col-lg-12">
                                         <div class="errorMessage">
@@ -477,24 +499,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php if(isset($_SESSION["errors"]) || isset($_SESSION["message"])) : ?>
-                                <div class="row mb-5">
-                                    <div class="col-lg-12">
-                                        <ul class="d-inline-block">
-                                        <?php if($_SESSION["errors"] ?? false) : ?>
-                                            <?php foreach($_SESSION["errors"] as $error):?>
-                                            <li class="m-0 fs-4 text-center" style="color:red;"><?= $error ?></li>
-                                            <?php endforeach ?>
-                                        <?php endif ?>
-                                        <?php if($_SESSION["message"] ?? false) : ?>
-                                            
-                                            <li class="m-0 fs-4 text-center" style="color:green;list-style:none;"><?= $_SESSION["message"] ?></li>
-                                            
-                                        <?php endif ?>
-                                        </ul>
-                                    </div>
-                                </div>
-                               <?php endif ?>
+                                
                             </form>
                         </div>
                     </div>
@@ -652,4 +657,4 @@
         </section>
     </main>
 
-<?php require_once "partials/footer.php" ?>
+<?php require_once "partials/footer.php"; ?>
