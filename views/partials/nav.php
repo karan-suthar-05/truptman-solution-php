@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-3 d-flex justify-content-end menu-icon d-lg-none">
-                    <button class="btn-mobile" onclick="handleMenuOpen()">
+                    <button class="btn-mobile" id="openMobile">
                         <span class="material-symbols-outlined">
                             menu
                         </span>
@@ -50,7 +50,7 @@
                                 alt="tueptman solution" class="w-75 h-75">
                         </div>
                         <div class="col-6 d-flex justify-content-end">
-                            <button onclick="handleMenuClose()" class="btn-mobile">
+                            <button  class="btn-mobile" id="closeMobile">
                                 <i class="fa-solid fa-xmark h3 text-white" style="cursor: pointer;"></i>
                             </button>
                         </div>

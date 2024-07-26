@@ -24,7 +24,7 @@ if($form->failed())
 
 // check for already record exist or not
 $config = require base_path("config.php");
-$db = new Database($config["Database"],"karan","karan@555");
+$db = new Database($config["Database"],"root","");
 
 $user = $db->query("select * from quote where email = :email",[
     "email" => $attributes["email"],

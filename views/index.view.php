@@ -585,32 +585,37 @@
                                 <form action="" id="contactusForm">
                                     <div class="row">
                                         <div class="col-lg-6 mb-5">
-                                            <input class="form-control" type="text" placeholder="Your name"
+                                            <input class="form-control" type="text" name="name" placeholder="Your name"
                                             aria-label="Your name">
                                                 <span class="form-msg d-none">This field is required</span>
                                         </div>
                                         <div class="col-lg-6 mb-5">
-                                            <input class="form-control" type="text" placeholder="Email address"
+                                            <input class="form-control" type="text" name="email" placeholder="Email address"
                                             aria-label="Email">
                                                 <span class="form-msg d-none">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-6 mb-5">
-                                            <input class="form-control" type="text" placeholder="Phone number"
+                                            <input class="form-control" type="text" name="phone" placeholder="Phone number"
                                                 aria-label="Phone">
                                                 <span class="form-msg d-none">This field is required</span>
                                         </div>
                                         <div class="col-lg-6 mb-5">
-                                            <input class="form-control" type="text" placeholder="Subject"
+                                            <input class="form-control" type="text" name="subject" placeholder="Subject"
                                                 aria-label="Subject">
                                                 <span class="form-msg d-none">This field is required</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <textarea class="form-control" rows="5" placeholder="Message"></textarea>
+                                            <textarea class="form-control" rows="5" placeholder="Message" name="message"></textarea>
                                             <span class="form-msg d-none">This field is required</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <span class="form-msg" id="errorMsg"></span>
                                         </div>
                                     </div>
                                     <div class="row">
